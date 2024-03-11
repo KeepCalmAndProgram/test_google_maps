@@ -1,0 +1,75 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:test_google_maps/widgets/custom_button.dart';
+import 'package:test_google_maps/widgets/custom_search_bar.dart';
+
+class GoogleMapsScreen extends StatefulWidget {
+  const GoogleMapsScreen({Key? key}) : super(key: key);
+
+  @override
+  State<GoogleMapsScreen> createState() => _GoogleMapsScreenState();
+}
+
+class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          const CustomSearchBar(),
+          const Positioned(
+            top: 80,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomButton(
+                  height: 35,
+                  width: 74,
+                  text: "Oil",
+                  icon: Icons.local_gas_station,
+                ),
+                CustomButton(
+                  height: 35,
+                  width: 95,
+                  text: "Hotels",
+                  icon: Icons.hotel,
+                ),
+                CustomButton(
+                  height: 35,
+                  width: 90,
+                  text: "Shops",
+                  icon: Icons.shopping_cart_sharp,
+                ),
+                CustomButton(
+                  height: 35,
+                  width: 125,
+                  text: "Restaurants",
+                  icon: Icons.restaurant,
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 40,
+            right: 30,
+            child: Column(
+              children: <Widget>[
+                FloatingActionButton(
+                  onPressed: () {},
+                  child: const Icon(Icons.location_on),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                FloatingActionButton(
+                  onPressed: () {},
+                  child: const Icon(Icons.arrow_circle_right_outlined),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
