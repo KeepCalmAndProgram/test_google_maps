@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RenderElements extends StatefulWidget {
-  const RenderElements({Key? key}) : super(key: key);
+  const RenderElements({Key? key, required this.title}) : super(key: key);
+
+  final String title;
 
   @override
   State<RenderElements> createState() => _RenderElementsState();
@@ -12,6 +14,10 @@ class _RenderElementsState extends State<RenderElements> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

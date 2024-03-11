@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test_google_maps/widgets/custom_button.dart';
-import 'package:test_google_maps/widgets/custom_search_bar.dart';
+import 'package:test_google_maps/task3/widgets/custom_button.dart';
+import 'package:test_google_maps/task3/widgets/custom_search_bar.dart';
 
 class GoogleMapsScreen extends StatefulWidget {
-  const GoogleMapsScreen({Key? key}) : super(key: key);
+  const GoogleMapsScreen({Key? key, required this.title}) : super(key: key);
+
+  final String title;
 
   @override
   State<GoogleMapsScreen> createState() => _GoogleMapsScreenState();
@@ -14,6 +16,10 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+      ),
       body: Stack(
         children: [
           const CustomSearchBar(),
