@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/increment_provider.dart';
+
 
 class StreamsTesting extends StatefulWidget {
   const StreamsTesting({super.key, required this.title});
@@ -12,13 +14,6 @@ class StreamsTesting extends StatefulWidget {
 }
 
 class _StreamsTestingState extends State<StreamsTesting> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +30,15 @@ class _StreamsTestingState extends State<StreamsTesting> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              //'$_counter',
+              context.watch<int>().toString(),
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: context.read<IncrementProvider>().incrementCounter(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
