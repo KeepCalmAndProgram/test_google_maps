@@ -38,7 +38,7 @@ class _StreamsTestingState extends State<StreamsTesting> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: context.read<IncrementProvider>().incrementCounter(),
+        onPressed: () => {},//context.read<IncrementProvider>().incrementCounter(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

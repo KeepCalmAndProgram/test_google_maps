@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      home: const RenderElements(title: "Render Elements"),
-      //home: const GoogleMapsScreen(title: "Google Maps Screen"),
+      //home: const RenderElements(title: "Render Elements"),
+      home: const GoogleMapsScreen(title: "Google Maps Screen"),
     );
   }
 }

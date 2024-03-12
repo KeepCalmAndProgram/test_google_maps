@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,22 +15,40 @@ class IncrementProvider extends StatefulWidget {
 }
 
 class IncrementProviderState extends State<IncrementProvider> {
-  late int _counter;
 
-  void incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  bool isDark = false;
+
+  late StreamController<bool> controller;
+
+  @override
+  void initState() {
+    super.initState();
+
   }
 
   @override
   Widget build(BuildContext context) {
+    var controller = Provider.of<int>(context);
+
     return Provider.value(
-      value: _counter,
+      value: isDark,
       child: Provider.value(
         value: this,
         child: widget.child,
       ),
     );
+  }
+}
+
+
+final xyz = EventProvider();
+
+// EventProvider (Stream)
+class EventProvider {
+  StreamController<bool> sc = StreamController();
+  bool isDart = false;
+
+  Stream<bool> intStream() {
+    return sc.stream;
   }
 }
