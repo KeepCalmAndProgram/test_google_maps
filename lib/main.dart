@@ -12,23 +12,34 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ThemeProvider(),
+    return Provider(
+      create: (_) => ThemeCubit(),
+      dispose: (_, provider) => provider.dispose(),
       child: Builder(
         builder: (context) {
-          return MaterialApp(
-            title: 'Google Map',
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: Colors.lightBlueAccent,
-                brightness: context.watch<ThemeProvider>().isDark
-                    ? Brightness.dark
-                    : Brightness.light,
-              ),
-              useMaterial3: true,
-            ),
-            // home: const RenderElements(title: "Render Elements"),
-            home: const GoogleMapsScreen(title: "Google Maps Screen"),
+          return StreamBuilder(
+            initialData: false,
+            stream: context.read<ThemeCubit>().stream,
+            builder: (context, snapshot) {
+              if (snapshot.data is bool) {
+                return MaterialApp(
+                  title: 'Google Map',
+                  theme: ThemeData(
+                    colorScheme: ColorScheme.fromSeed(
+                      seedColor: Colors.lightBlueAccent,
+                      brightness: snapshot.data as bool
+                          ? Brightness.dark
+                          : Brightness.light,
+                    ),
+                    useMaterial3: true,
+                  ),
+                  // home: const RenderElements(title: "Render Elements"),
+                  home: const GoogleMapsScreen(title: "Google Maps Screen"),
+                );
+              }
+
+              return const SizedBox();
+            },
           );
         },
       ),
