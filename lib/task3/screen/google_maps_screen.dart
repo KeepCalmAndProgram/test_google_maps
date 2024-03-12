@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_google_maps/task3/widgets/custom_button.dart';
 import 'package:test_google_maps/task3/widgets/custom_search_bar.dart';
@@ -22,35 +21,45 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
       ),
       body: Stack(
         children: [
-          const CustomSearchBar(),
           const Positioned(
-            top: 80,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            top: 16,
+            left: 0,
+            right: 0,
+            child: Column(
               children: [
-                CustomButton(
-                  height: 35,
-                  width: 74,
-                  text: "Oil",
-                  icon: Icons.local_gas_station,
-                ),
-                CustomButton(
-                  height: 35,
-                  width: 95,
-                  text: "Hotels",
-                  icon: Icons.hotel,
-                ),
-                CustomButton(
-                  height: 35,
-                  width: 90,
-                  text: "Shops",
-                  icon: Icons.shopping_cart_sharp,
-                ),
-                CustomButton(
-                  height: 35,
-                  width: 125,
-                  text: "Restaurants",
-                  icon: Icons.restaurant,
+                CustomSearchBar(),
+                SizedBox(
+                  height: 40,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomButton(
+                        height: 35,
+                        width: 74,
+                        text: "Oil",
+                        icon: Icons.local_gas_station,
+                      ),
+                      CustomButton(
+                        height: 35,
+                        width: 95,
+                        text: "Hotels",
+                        icon: Icons.hotel,
+                      ),
+                      CustomButton(
+                        height: 35,
+                        width: 90,
+                        text: "Shops",
+                        icon: Icons.shopping_cart_sharp,
+                      ),
+                      CustomButton(
+                        height: 35,
+                        width: 125,
+                        text: "Restaurants",
+                        icon: Icons.restaurant,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

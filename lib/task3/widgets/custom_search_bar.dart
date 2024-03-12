@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../task2/providers/increment_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:test_google_maps/task3/providers/theme_provider.dart';
 
 class CustomSearchBar extends StatefulWidget {
   const CustomSearchBar({Key? key}) : super(key: key);
@@ -15,12 +14,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = ThemeData(
-        useMaterial3: true,
-        brightness: isDark ? Brightness.dark : Brightness.light);
-
-    return Scaffold(
-      body: Padding(
+    return Padding(
         padding: const EdgeInsets.all(8.0),
         child: SearchAnchor(
           builder: (BuildContext context, SearchController controller) {
@@ -37,13 +31,8 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                 Tooltip(
                   message: 'Change brightness mode',
                   child: IconButton(
-                    isSelected: isDark,
-                    onPressed: () {
-            IncrementProvider(key: null, child: isDark,);
-                     // setState(() {
-                      //  isDark = !isDark;
-                     // });
-                    },
+                    isSelected: context.watch<ThemeProvider>().isDark,
+                    onPressed: context.read<ThemeProvider>().changeTheme,
                     icon: const Icon(Icons.wb_sunny_outlined),
                     selectedIcon: const Icon(Icons.brightness_2_outlined),
                   ),
@@ -71,7 +60,6 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
             );
           },
         ),
-      ),
-    );
+      );
   }
 }

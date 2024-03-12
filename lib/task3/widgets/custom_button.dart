@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -21,12 +19,10 @@ class CustomButton extends StatelessWidget {
     return SizedBox(
       height: height,
       width: width,
-      child: FloatingActionButton.extended(
+      child: TextButton(
         onPressed: () {},
-        label: Text(text),
-        icon: Icon(icon),
+        child: Text(text),
       ),
     );
   }
 }
-
