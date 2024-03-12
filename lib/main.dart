@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test_google_maps/task2/providers/increment_provider.dart';
+import 'package:test_google_maps/task3/providers/theme_provider.dart';
 import 'package:test_google_maps/task3/screen/google_maps_screen.dart';
-import 'package:test_google_maps/task1/first_task.dart';
-import 'package:test_google_maps/task2/screens/streams_testing_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,15 +12,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Google Map',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: Builder(
+        builder: (context) {
+          return MaterialApp(
+            title: 'Google Map',
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: Colors.lightBlueAccent,
+                brightness: context.watch<ThemeProvider>().isDark
+                    ? Brightness.dark
+                    : Brightness.light,
+              ),
+              useMaterial3: true,
+            ),
+            // home: const RenderElements(title: "Render Elements"),
+            home: const GoogleMapsScreen(title: "Google Maps Screen"),
+          );
+        },
       ),
-
-      //home: const RenderElements(title: "Render Elements"),
-      home: const GoogleMapsScreen(title: "Google Maps Screen"),
     );
   }
 }
