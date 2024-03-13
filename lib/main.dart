@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_google_maps/task3/providers/theme_provider.dart';
 import 'package:test_google_maps/task3/screen/google_maps_screen.dart';
+import 'package:test_google_maps/task4/animation/rotation_animation_widget.dart';
+import 'package:test_google_maps/task4/animation/scale_animation_widget.dart';
 
 void main() {
   runApp(const MyApp());
